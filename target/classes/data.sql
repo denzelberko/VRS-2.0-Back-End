@@ -1,0 +1,3 @@
+INSERT INTO destinations(id, name, weather, kidFriendlyScore, foodQualityScore, priceIndex, instagramAbilityScore, nativeLanguage, purpose, hotelQualityScore, country, continent, popularity, recTripLength, currency, attractionScore, safetyScore) VALUES (1, 'New York City', 'Continental', 2, 10, 9, 9, 'English', 'Sightseeing', 8, 'USA', 'North America', 10, 'weekend', 'USD', 9, 5); 
+INSERT INTO attractions(id, destinationId, name, hoursToVisit, type, description, cost) VALUES (1,1,'National 9/11 Memorial & Museum', 2, 'Both', 'Monument and museum commemorating the victims of the 9/11 attacks', 40);
+INSERT INTO hotels(id, destinationId, name, cost, rating) VALUES(1,1,'Wall Street Hotel', 660, 5);
