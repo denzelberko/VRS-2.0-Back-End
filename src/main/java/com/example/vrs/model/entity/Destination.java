@@ -3,6 +3,9 @@ package com.example.vrs.model.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.lang.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -23,15 +26,18 @@ public class Destination {
     private long id;
 
     @OneToMany(mappedBy = "destination")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Nullable
     @JsonManagedReference
     private List<Attraction> attractions = new ArrayList<>();
 
     @OneToMany(mappedBy = "destination")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Nullable
     private List<Hotel> hotels = new ArrayList<>();
 
     @OneToMany(mappedBy = "destination")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Nullable
     private List<Review> reviews = new ArrayList<>();
 
@@ -42,16 +48,16 @@ public class Destination {
     private String weather;
 
     @NotEmpty
-    private long kidFriendlyScore;
+    private Long kidFriendlyScore;
 
     @NotEmpty
-    private long foodQualityScore;
+    private Long foodQualityScore;
 
     @NotEmpty
-    private long priceIndex;
+    private Long priceIndex;
 
     @NotEmpty
-    private long instagramAbilityScore;
+    private Long instagramAbilityScore;
 
     @NotEmpty
     private String nativeLanguage;
@@ -60,10 +66,10 @@ public class Destination {
     private String purpose;
 
     @NotEmpty
-    private long hotelQualityScore;
+    private Long hotelQualityScore;
 
     @NotEmpty
-    private String popularity;
+    private String popularity; // changed from String
 
     @NotEmpty
     private String recTripLength;
@@ -78,9 +84,15 @@ public class Destination {
     private String currency;
 
     @NotEmpty
-    private long attractionScore;
+    private Long attractionScore;
 
     @NotEmpty
-    private String safetyScore;
+    private String safetyScore; // changed from String
+
+    @Nullable
+    private Double score;
+
+    @Nullable
+    private Integer rank;
 
 }

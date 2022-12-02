@@ -25,11 +25,9 @@ public class Review {
     private Destination destination;
 
     @NotEmpty
-    private Long intuitiveScore;
+    private Long rating;
 
     @NotEmpty
-    private Long listScore;
+    private String message;
 
-    @NotEmpty
-    private Long completenessScore;
 }
