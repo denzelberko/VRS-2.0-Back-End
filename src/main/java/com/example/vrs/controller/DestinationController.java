@@ -309,6 +309,8 @@ public class DestinationController {
             for (int j = 0; j < 13; j++) { // compute dot product of multiplier and catScore vectors
                 score += multiplier[j] * catScore[j];
             }
+            score += 13;
+            score = (score * 100.00) / 26.00;
             score = (double) (Math.round(score * 100.00) / 100.00);
             destinations.get(i).setScore(score); // set destination's score in database
             scores[i] = score; // add score to list
