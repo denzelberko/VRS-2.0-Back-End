@@ -22,4 +22,5 @@ public class DestinationDto {
     private Long attractionScore;
     private String safetyScore;
     private String popularity;
+    private String imageURL;
 }

@@ -90,6 +90,9 @@ public class Destination {
     private String safetyScore; // changed from String
 
     @Nullable
+    private String imageURL;
+
+    @Nullable
     private Double score;
 
     @Nullable

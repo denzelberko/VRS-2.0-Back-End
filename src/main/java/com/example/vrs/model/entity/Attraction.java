@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.lang.Nullable;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -44,4 +46,7 @@ public class Attraction {
 
     @NotEmpty
     private float cost;
+
+    @Nullable
+    private String imageURL;
 }

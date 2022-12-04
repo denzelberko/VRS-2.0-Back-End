@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.plaf.basic.BasicComboPopup.ListDataHandler;
 
 @CrossOrigin
@@ -124,6 +124,7 @@ public class DestinationController {
         newDestination.setAttractionScore(destinationDto.getAttractionScore());
         newDestination.setSafetyScore(destinationDto.getSafetyScore());
         newDestination.setPopularity(destinationDto.getPopularity());
+        newDestination.setImageURL(destinationDto.getImageURL());
         return repository.save(newDestination);
     }
 
@@ -147,6 +148,7 @@ public class DestinationController {
                     destination.setAttractionScore(destinationDto.getAttractionScore());
                     destination.setSafetyScore(destinationDto.getSafetyScore());
                     destination.setPopularity(destinationDto.getPopularity());
+                    destination.setImageURL(destinationDto.getImageURL());
                     // #endregion
                     return repository.save(destination);
                 })
