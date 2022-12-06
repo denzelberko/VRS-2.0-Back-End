@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 public class Review {
 
     @Id
-    private Long reviewId;
+    private String reviewId;
 
     @ManyToOne
     @JoinColumn(name = "destinationsId")
