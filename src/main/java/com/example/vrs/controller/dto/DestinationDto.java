@@ -15,12 +15,16 @@ public class DestinationDto {
     private Long instagramAbilityScore;
     private String nativeLanguage;
     private String purpose;
+    private String recTripLength;
     private Long hotelQualityScore;
+    private Long popularity;
+
     private String country;
     private String continent;
     private String currency;
     private Long attractionScore;
-    private String safetyScore;
-    private String popularity;
+    private Long safetyScore;
+
     private String imageURL;
+
 }

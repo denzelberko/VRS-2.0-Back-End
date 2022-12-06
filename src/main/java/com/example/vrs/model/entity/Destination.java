@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class Destination {
     @OneToMany(mappedBy = "destination")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @Nullable
+    @JsonManagedReference
     private List<Review> reviews = new ArrayList<>();
 
     @NotEmpty
@@ -47,16 +50,16 @@ public class Destination {
     @NotEmpty
     private String weather;
 
-    @NotEmpty
+    @NotNull
     private Long kidFriendlyScore;
 
-    @NotEmpty
+    @NotNull
     private Long foodQualityScore;
 
-    @NotEmpty
+    @NotNull
     private Long priceIndex;
 
-    @NotEmpty
+    @NotNull
     private Long instagramAbilityScore;
 
     @NotEmpty
@@ -65,11 +68,11 @@ public class Destination {
     @NotEmpty
     private String purpose;
 
-    @NotEmpty
+    @NotNull
     private Long hotelQualityScore;
 
-    @NotEmpty
-    private String popularity; // changed from String
+    @NotNull
+    private Long popularity; // changed from String
 
     @NotEmpty
     private String recTripLength;
@@ -83,11 +86,11 @@ public class Destination {
     @NotEmpty
     private String currency;
 
-    @NotEmpty
+    @NotNull
     private Long attractionScore;
 
-    @NotEmpty
-    private String safetyScore; // changed from String
+    @NotNull
+    private Long safetyScore; // changed from String
 
     @Nullable
     private String imageURL;

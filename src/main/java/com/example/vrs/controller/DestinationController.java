@@ -118,6 +118,7 @@ public class DestinationController {
         newDestination.setNativeLanguage(destinationDto.getNativeLanguage());
         newDestination.setPurpose(destinationDto.getPurpose());
         newDestination.setHotelQualityScore(destinationDto.getHotelQualityScore());
+        newDestination.setRecTripLength(destinationDto.getRecTripLength());
         newDestination.setCountry(destinationDto.getCountry());
         newDestination.setContinent(destinationDto.getContinent());
         newDestination.setCurrency(destinationDto.getCurrency());
@@ -142,6 +143,7 @@ public class DestinationController {
                     destination.setNativeLanguage(destinationDto.getNativeLanguage());
                     destination.setPurpose(destinationDto.getPurpose());
                     destination.setHotelQualityScore(destinationDto.getHotelQualityScore());
+                    destination.setRecTripLength(destinationDto.getRecTripLength());
                     destination.setCountry(destinationDto.getCountry());
                     destination.setContinent(destinationDto.getContinent());
                     destination.setCurrency(destinationDto.getCurrency());
@@ -268,18 +270,18 @@ public class DestinationController {
             }
 
             // busy (input index 2, output index 5):
-            int busyVar;
+            double busyVar;
             if (userInputs.get(2).equals("not busy")) {
-                busyVar = 1;
+                busyVar = 1.0;
             } // not busy
             else if (userInputs.get(2).equals("somewhat")) {
-                busyVar = 5;
+                busyVar = 5.0;
             } // somewhat
             else {
-                busyVar = 9;
+                busyVar = 9.0;
             } // very
             destinations.get(i).getPopularity();
-            int busyDiff = (int) Math.abs(busyVar - Integer.parseInt(destinations.get(i).getPopularity()));
+            double busyDiff = Math.abs(busyVar - destinations.get(i).getPopularity());
             if (busyDiff <= 1) {
                 catScore[5] = 1;
             } // map difference to score
@@ -304,7 +306,7 @@ public class DestinationController {
             catScore[9] = (destinations.get(i).getHotelQualityScore() - 5.0) / 5.0;
             catScore[10] = (destinations.get(i).getInstagramAbilityScore() - 5.0) / 5.0;
             catScore[11] = (destinations.get(i).getKidFriendlyScore() - 5.0) / 5.0;
-            catScore[12] = (Double.parseDouble(destinations.get(i).getSafetyScore()) - 5.0) / 5.0;
+            catScore[12] = (destinations.get(i).getSafetyScore() - 5.0) / 5.0;
 
             // compute overall score for destination
             Double score = 0.0;
