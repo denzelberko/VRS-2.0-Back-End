@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.lang.Nullable;
 
@@ -23,19 +24,19 @@ import javax.persistence.*;
 @Table(name = "attractions")
 public class Attraction {
     @Id
-    @NotEmpty
+    @NotNull
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "destinationId")
-    @NotEmpty
+    @NotNull
     @JsonBackReference
     private Destination destination;
 
     @NotEmpty
     private String name;
 
-    @NotEmpty
+    @NotNull
     private float hoursToVisit;
 
     @NotEmpty
@@ -44,7 +45,7 @@ public class Attraction {
     @NotEmpty
     private String description;
 
-    @NotEmpty
+    @NotNull
     private float cost;
 
     @Nullable
