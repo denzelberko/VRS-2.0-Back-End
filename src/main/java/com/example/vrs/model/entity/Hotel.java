@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -20,22 +22,22 @@ import javax.persistence.*;
 public class Hotel {
 
     @Id
-    @NotEmpty
+    @NotNull
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "destinationId")
-    @NotEmpty
+    @NotNull
     @JsonIgnoreProperties({ "hotels" })
     private Destination destination;
 
     @NotEmpty
     private String name;
 
-    @NotEmpty
+    @NotNull
     private float cost;
 
-    @NotEmpty
+    @NotNull
     private float rating;
 
 }
