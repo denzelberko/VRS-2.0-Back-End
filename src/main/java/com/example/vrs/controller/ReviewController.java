@@ -36,4 +36,9 @@ public class ReviewController {
         return repository.save(newReview);
     }
 
+    @GetMapping("/reviews")
+    List<Review> retrieveAllReviews() {
+        return repository.findAll();
+    }
+
 }
