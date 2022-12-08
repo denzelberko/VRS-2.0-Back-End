@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 import javax.swing.plaf.basic.BasicComboPopup.ListDataHandler;
@@ -131,25 +132,51 @@ public class DestinationController {
 
     @PutMapping("/destinations/{id}")
     Destination updateDestination(@RequestBody DestinationDto destinationDto, @PathVariable("id") Long destinationId) {
-        return repository.findById(destinationId)
+        Destination finalDestination = repository.findById(destinationId)
                 .map(destination -> {
                     // #region Set New Attributes
-                    destination.setName(destinationDto.getName());
-                    destination.setWeather(destinationDto.getWeather());
-                    destination.setKidFriendlyScore(destinationDto.getKidFriendlyScore());
-                    destination.setFoodQualityScore(destinationDto.getFoodQualityScore());
-                    destination.setPriceIndex(destinationDto.getPriceIndex());
-                    destination.setInstagramAbilityScore(destinationDto.getInstagramAbilityScore());
-                    destination.setNativeLanguage(destinationDto.getNativeLanguage());
-                    destination.setPurpose(destinationDto.getPurpose());
-                    destination.setHotelQualityScore(destinationDto.getHotelQualityScore());
-                    destination.setRecTripLength(destinationDto.getRecTripLength());
-                    destination.setCountry(destinationDto.getCountry());
-                    destination.setContinent(destinationDto.getContinent());
-                    destination.setCurrency(destinationDto.getCurrency());
-                    destination.setAttractionScore(destinationDto.getAttractionScore());
-                    destination.setSafetyScore(destinationDto.getSafetyScore());
-                    destination.setPopularity(destinationDto.getPopularity());
+                    Destination currDestination = repository.findById(destinationId).orElseThrow(
+                            () -> new DestinationNotFoundException(destinationId));
+                    destination.setName(
+                            destinationDto.getName() == null ? currDestination.getName() : destinationDto.getName());
+                    destination.setWeather(destinationDto.getWeather() == null ? currDestination.getWeather()
+                            : destinationDto.getWeather());
+                    destination.setKidFriendlyScore(
+                            destinationDto.getKidFriendlyScore() == null ? currDestination.getKidFriendlyScore()
+                                    : destinationDto.getKidFriendlyScore());
+                    destination.setFoodQualityScore(
+                            destinationDto.getFoodQualityScore() == null ? currDestination.getFoodQualityScore()
+                                    : destinationDto.getFoodQualityScore());
+                    destination.setPriceIndex(destinationDto.getPriceIndex() == null ? currDestination.getPriceIndex()
+                            : destinationDto.getPriceIndex());
+                    destination.setInstagramAbilityScore(destinationDto.getInstagramAbilityScore() == null
+                            ? currDestination.getInstagramAbilityScore()
+                            : destinationDto.getInstagramAbilityScore());
+                    destination.setNativeLanguage(
+                            destinationDto.getNativeLanguage() == null ? currDestination.getNativeLanguage()
+                                    : destinationDto.getNativeLanguage());
+                    destination.setPurpose(destinationDto.getPurpose() == null ? currDestination.getPurpose()
+                            : destinationDto.getPurpose());
+                    destination.setHotelQualityScore(
+                            destinationDto.getHotelQualityScore() == null ? currDestination.getHotelQualityScore()
+                                    : destinationDto.getHotelQualityScore());
+                    destination.setRecTripLength(
+                            destinationDto.getRecTripLength() == null ? currDestination.getRecTripLength()
+                                    : destinationDto.getRecTripLength());
+                    destination.setCountry(destinationDto.getCountry() == null ? currDestination.getCountry()
+                            : destinationDto.getCountry());
+                    destination.setContinent(destinationDto.getContinent() == null ? currDestination.getContinent()
+                            : destinationDto.getContinent());
+                    destination.setCurrency(destinationDto.getCurrency() == null ? currDestination.getCurrency()
+                            : destinationDto.getCurrency());
+                    destination.setAttractionScore(
+                            destinationDto.getAttractionScore() == null ? currDestination.getAttractionScore()
+                                    : destinationDto.getAttractionScore());
+                    destination
+                            .setSafetyScore(destinationDto.getSafetyScore() == null ? currDestination.getSafetyScore()
+                                    : destinationDto.getSafetyScore());
+                    destination.setPopularity(destinationDto.getPopularity() == null ? currDestination.getPopularity()
+                            : destinationDto.getPopularity());
                     destination.setImageURL(destinationDto.getImageURL());
                     // #endregion
                     return repository.save(destination);
@@ -159,6 +186,7 @@ public class DestinationController {
                     newDestination.setId(destinationId);
                     return repository.save(newDestination);
                 });
+        return finalDestination;
     }
 
     // PAGES: Admin
