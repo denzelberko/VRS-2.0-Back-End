@@ -177,7 +177,8 @@ public class DestinationController {
                                     : destinationDto.getSafetyScore());
                     destination.setPopularity(destinationDto.getPopularity() == null ? currDestination.getPopularity()
                             : destinationDto.getPopularity());
-                    destination.setImageURL(destinationDto.getImageURL());
+                    destination.setImageURL(destinationDto.getImageURL() == null ? currDestination.getImageURL()
+                            : destinationDto.getImageURL());
                     // #endregion
                     return repository.save(destination);
                 })
